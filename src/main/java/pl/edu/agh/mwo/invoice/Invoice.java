@@ -14,7 +14,7 @@ public class Invoice {
     }
 
     public void addProduct(Product product, Integer quantity) {
-        // TODO: implement
+        //komentarz to skomitowania
     }
 
     public BigDecimal getSubtotal() {//zmienic nazwe jesli niejasna
