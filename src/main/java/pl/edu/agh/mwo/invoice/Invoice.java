@@ -17,11 +17,23 @@ public class Invoice {
     }
 
     public BigDecimal getSubtotal() {
-        return null;
+        BigDecimal subtotal = new BigDecimal("0");
+        if (!(products==null||products.isEmpty())) {
+            for (Product product : this.products) {
+                subtotal = subtotal.add(product.getPrice());
+            }
+        }
+        return subtotal;
     }
 
     public BigDecimal getTax() {
-        return null;
+        BigDecimal tax = new BigDecimal("0");
+        if (!(products==null||products.isEmpty())) {
+            for (Product product : this.products) {
+                tax = tax.add(product.getTaxPercent());
+            }
+        }
+        return tax;
     }
 
     public BigDecimal getTotal() {
