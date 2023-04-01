@@ -6,16 +6,11 @@ import java.util.Date;
 
 public abstract class Product {
     private final String name;
-
     private final BigDecimal price;
-
     private final BigDecimal taxPercent;
-
     private BigDecimal excise;
-
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     String date = sdf.format(new Date());
-
     protected Product(String name, BigDecimal price, BigDecimal tax, BigDecimal excise) {
         if (name == null || name.equals("")
                 || price == null || tax == null || tax.compareTo(new BigDecimal(0)) < 0
@@ -27,24 +22,18 @@ public abstract class Product {
         this.taxPercent = tax;
         this.excise = excise;
     }
-
     public BigDecimal getExcise() {
        return excise;
     }
-
-
     public String getName() {
         return name;
     }
-
     public BigDecimal getPrice() {
         return price;
     }
-
     public BigDecimal getTaxPercent() {
         return taxPercent.multiply(new BigDecimal(100));
     }
-
     public BigDecimal getPriceWithTaxAndExcise() {
         return price.multiply(taxPercent).add(price).add(excise);
     }

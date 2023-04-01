@@ -10,7 +10,6 @@ public class Invoice {
     private Map<Product, Integer> products = new HashMap<>();
     private static int nextNumber = 0;
     private final int number = ++nextNumber;
-
     public void addProduct(Product product) {
         addProduct(product, 1);
     }
@@ -26,18 +25,14 @@ public class Invoice {
         products.put(product, quantity);
     }
     public BigDecimal getPositionValue(Product product){
-
         BigDecimal quantity = new BigDecimal(products.get(product));
         BigDecimal value = product.getPrice().multiply(quantity);
-
     return value;
     }
 
     public BigDecimal getPositionValueWithTaxAndExcise(Product product){
-
         BigDecimal quantity = new BigDecimal(products.get(product));
         BigDecimal value = product.getPriceWithTaxAndExcise().multiply(quantity);
-
         return value;
     }
 
@@ -60,11 +55,9 @@ public class Invoice {
         }
         return totalGross;
     }
-
     public int getNumber() {
         return number;
     }
-
     public Map<Product, Integer> getProducts() {
         return products;
     }
