@@ -9,7 +9,7 @@ public abstract class Product {
     private final BigDecimal price;
     private final BigDecimal taxPercent;
     private BigDecimal excise;
-    private BigDecimal persentMult = new BigDecimal(100);
+    private final BigDecimal persentMult = new BigDecimal(100);
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     String date = sdf.format(new Date());
 
