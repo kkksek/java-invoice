@@ -19,14 +19,32 @@ public class Invoice {
         if (product == null || quantity <= 0) {
             throw new IllegalArgumentException();
         }
+        if (products.containsKey(product))
+        {
+            quantity=quantity+products.get(product);
+        }
         products.put(product, quantity);
+    }
+    public BigDecimal getPositionValue(Product product){
+
+        BigDecimal quantity = new BigDecimal(products.get(product));
+        BigDecimal value = product.getPrice().multiply(quantity);
+
+    return value;
+    }
+
+    public BigDecimal getPositionValueWithTaxAndExcise(Product product){
+
+        BigDecimal quantity = new BigDecimal(products.get(product));
+        BigDecimal value = product.getPriceWithTaxAndExcise().multiply(quantity);
+
+        return value;
     }
 
     public BigDecimal getNetTotal() {
         BigDecimal totalNet = BigDecimal.ZERO;
         for (Product product : products.keySet()) {
-            BigDecimal quantity = new BigDecimal(products.get(product));
-            totalNet = totalNet.add(product.getPrice().multiply(quantity));
+            totalNet = totalNet.add(getPositionValue(product));
         }
         return totalNet;
     }
@@ -38,13 +56,16 @@ public class Invoice {
     public BigDecimal getGrossTotal() {
         BigDecimal totalGross = BigDecimal.ZERO;
         for (Product product : products.keySet()) {
-            BigDecimal quantity = new BigDecimal(products.get(product));
-            totalGross = totalGross.add(product.getPriceWithTax().multiply(quantity));
+            totalGross = totalGross.add(getPositionValueWithTaxAndExcise(product));
         }
         return totalGross;
     }
 
     public int getNumber() {
         return number;
+    }
+
+    public Map<Product, Integer> getProducts() {
+        return products;
     }
 }

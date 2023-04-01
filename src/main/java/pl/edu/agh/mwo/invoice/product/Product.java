@@ -1,6 +1,8 @@
 package pl.edu.agh.mwo.invoice.product;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public abstract class Product {
     private final String name;
@@ -9,7 +11,12 @@ public abstract class Product {
 
     private final BigDecimal taxPercent;
 
-    protected Product(String name, BigDecimal price, BigDecimal tax) {
+    private BigDecimal excise;
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    String date = sdf.format(new Date());
+
+    protected Product(String name, BigDecimal price, BigDecimal tax, BigDecimal excise) {
         if (name == null || name.equals("")
                 || price == null || tax == null || tax.compareTo(new BigDecimal(0)) < 0
                 || price.compareTo(new BigDecimal(0)) < 0) {
@@ -18,7 +25,13 @@ public abstract class Product {
         this.name = name;
         this.price = price;
         this.taxPercent = tax;
+        this.excise = excise;
     }
+
+    public BigDecimal getExcise() {
+       return excise;
+    }
+
 
     public String getName() {
         return name;
@@ -29,10 +42,10 @@ public abstract class Product {
     }
 
     public BigDecimal getTaxPercent() {
-        return taxPercent;
+        return taxPercent.multiply(new BigDecimal(100));
     }
 
-    public BigDecimal getPriceWithTax() {
-        return price.multiply(taxPercent).add(price);
+    public BigDecimal getPriceWithTaxAndExcise() {
+        return price.multiply(taxPercent).add(price).add(excise);
     }
 }
