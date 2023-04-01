@@ -20,20 +20,19 @@ public class Invoice {
         if (product == null || quantity <= 0) {
             throw new IllegalArgumentException();
         }
-        if (products.containsKey(product))
-        {
+        if (products.containsKey(product)) {
             quantity = quantity + products.get(product);
         }
         products.put(product, quantity);
     }
 
-    public BigDecimal getPositionValue(Product product){
+    public BigDecimal getPositionValue(Product product) {
         BigDecimal quantity = new BigDecimal(products.get(product));
         BigDecimal value = product.getPrice().multiply(quantity);
     return value;
     }
 
-    public BigDecimal getPositionValueWithTaxAndExcise(Product product){
+    public BigDecimal getPositionValueWithTaxAndExcise(Product product) {
         BigDecimal quantity = new BigDecimal(products.get(product));
         BigDecimal value = product.getPriceWithTaxAndExcise().multiply(quantity);
         return value;
