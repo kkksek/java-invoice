@@ -10,8 +10,7 @@ public class FuelCanister extends Product {
     static String stepMotherDay = "05/03";
     static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
     static String date = sdf.format(new Date());
-    static final double EXCISE = 5.56;
-    static BigDecimal excise = new BigDecimal(EXCISE);
+
 
     public FuelCanister(String name, BigDecimal price) {
         super(name, price, new BigDecimal("0.23"), calculateExcise());
@@ -26,6 +25,8 @@ public class FuelCanister extends Product {
     }
 
     public static BigDecimal calculateExcise() {
+        final double EXCISE = 5.56;
+        BigDecimal excise = new BigDecimal(EXCISE);
         if (date.equals(stepMotherDay)) {
             excise = BigDecimal.ZERO;
         }
