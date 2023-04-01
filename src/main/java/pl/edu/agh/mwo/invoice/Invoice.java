@@ -29,7 +29,7 @@ public class Invoice {
     public BigDecimal getPositionValue(Product product) {
         BigDecimal quantity = new BigDecimal(products.get(product));
         BigDecimal value = product.getPrice().multiply(quantity);
-    return value;
+        return value;
     }
 
     public BigDecimal getPositionValueWithTaxAndExcise(Product product) {

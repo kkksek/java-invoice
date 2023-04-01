@@ -17,14 +17,16 @@ public class FuelCanister extends Product {
     public static void setStepMotherDay(String stepMotherDay) {
         FuelCanister.stepMotherDay = stepMotherDay;
     }
+
     public static void setDate(String date) {
         FuelCanister.date = date;
     }
+
     public static BigDecimal calculateExcise() {
         BigDecimal excise = new BigDecimal(5.56);
-            if (date.equals(stepMotherDay)) {
-                excise = BigDecimal.ZERO;
-            }
-            return excise.setScale(2, HALF_UP);
+        if (date.equals(stepMotherDay)) {
+            excise = BigDecimal.ZERO;
+        }
+        return excise.setScale(2, HALF_UP);
     }
 }
