@@ -1,12 +1,15 @@
 package pl.edu.agh.mwo.invoice;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.junit.jupiter.api.Assertions;
 import pl.edu.agh.mwo.invoice.Invoice;
 import pl.edu.agh.mwo.invoice.product.DairyProduct;
 import pl.edu.agh.mwo.invoice.product.OtherProduct;
@@ -150,4 +153,14 @@ public class InvoiceTest {
         int number2 = new Invoice().getNumber();
         Assert.assertThat(number1, Matchers.lessThan(number2));
     }
+    @Test
+    public void testQuantitiesOfDuplicatesProducts(){
+
+        Product product = new TaxFreeProduct("Chleb", new BigDecimal("5"));
+        invoice.addProduct(product,5);
+        invoice.addProduct(product,4);
+
+        Assert.assertEquals(invoice.getProducts().get(product),Integer.valueOf(9));
+    }
+
 }

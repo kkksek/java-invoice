@@ -9,17 +9,26 @@ import static java.math.RoundingMode.HALF_UP;
 
 public class FuelCanister extends Product{
 
-
+    static String stepMotherDay = "05/03";
+    static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
+    static String date = sdf.format(new Date());
 
     public FuelCanister(String name, BigDecimal price) {
         super(name, price,new BigDecimal("0.23"),calculateExcise());
     }
 
+    public static void setStepMotherDay(String stepMotherDay) {
+        FuelCanister.stepMotherDay = stepMotherDay;
+    }
+
+    public static void setDate(String date) {
+        FuelCanister.date = date;
+    }
+
     public static BigDecimal calculateExcise(){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String date = sdf.format(new Date());
+
         BigDecimal excise;
-         if (date.equals("05/04/2023")){
+         if (date.equals(stepMotherDay)){
              excise = BigDecimal.ZERO;
          }
         else {excise = new BigDecimal(5.56);}
