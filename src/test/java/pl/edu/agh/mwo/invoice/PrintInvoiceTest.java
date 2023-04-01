@@ -51,14 +51,14 @@ public class PrintInvoiceTest extends TestCase {
     public void testPrintTwoLinesOfProduct(){
         Invoice invoice = new Invoice();
         Product product = new FuelCanister("Diesel",new BigDecimal(4));
-        Product product1 = new OtherProduct("Buty",new BigDecimal(3));
         invoice.addProduct(product,1);
+        Product product1 = new OtherProduct("Buty",new BigDecimal(3));
         invoice.addProduct(product1,5);
         printInvoice(invoice);
         Assert.assertEquals(
                 "Invoice number: 2\r\n"+
-                        "Product: Diesel, Unit price: 4, Quantity: 1 || Netto value: 4 || VAT 23.00% || Excise: 5.56 || Gross value: 10.48\r\n" +
                         "Product: Buty, Unit price: 3, Quantity: 5 || Netto value: 15 || VAT 23.00% || Gross value: 18.45\r\n" +
+                        "Product: Diesel, Unit price: 4, Quantity: 1 || Netto value: 4 || VAT 23.00% || Excise: 5.56 || Gross value: 10.48\r\n" +
                         "Number of positions: 2\r\n"+
                         "Net total: 19 || Tax total: 9.93 || Gross total: 28.93".trim(),
                 outputStreamCaptor.toString()

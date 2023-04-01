@@ -13,7 +13,8 @@ public class PrintInvoice {
 
         int posCounter = 0;
         for (Product product : invoice.getProducts().keySet()) {
-            System.out.print("Product: " + product.getName() + ", Unit price: " + product.getPrice() + ", Quantity: " + invoice.getProducts().get(product)
+            System.out.print("Product: " + product.getName() + ", Unit price: " + product.getPrice()
+                    + ", Quantity: " + invoice.getProducts().get(product)
                     + " || Netto value: " + invoice.getPositionValue(product)
                     + " || VAT " + product.getTaxPercent() + "%");
 
@@ -26,6 +27,7 @@ public class PrintInvoice {
             posCounter++;
         }
         System.out.println("Number of positions: " + posCounter);
-        System.out.println("Net total: " +invoice.getNetTotal()+" || Tax total: "+invoice.getTaxTotal()+" || Gross total: "+invoice.getGrossTotal());
+        System.out.println("Net total: " + invoice.getNetTotal() + " || Tax total: "
+                + invoice.getTaxTotal() + " || Gross total: " + invoice.getGrossTotal());
     }
 }

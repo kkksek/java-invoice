@@ -3,6 +3,7 @@ package pl.edu.agh.mwo.invoice;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import pl.edu.agh.mwo.invoice.product.Product;
 
@@ -10,6 +11,7 @@ public class Invoice {
     private Map<Product, Integer> products = new HashMap<>();
     private static int nextNumber = 0;
     private final int number = ++nextNumber;
+
     public void addProduct(Product product) {
         addProduct(product, 1);
     }
@@ -20,10 +22,11 @@ public class Invoice {
         }
         if (products.containsKey(product))
         {
-            quantity=quantity+products.get(product);
+            quantity = quantity + products.get(product);
         }
         products.put(product, quantity);
     }
+
     public BigDecimal getPositionValue(Product product){
         BigDecimal quantity = new BigDecimal(products.get(product));
         BigDecimal value = product.getPrice().multiply(quantity);
@@ -55,9 +58,11 @@ public class Invoice {
         }
         return totalGross;
     }
+
     public int getNumber() {
         return number;
     }
+
     public Map<Product, Integer> getProducts() {
         return products;
     }
