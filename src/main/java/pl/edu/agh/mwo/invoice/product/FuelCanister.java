@@ -25,8 +25,8 @@ public class FuelCanister extends Product {
     }
 
     public static BigDecimal calculateExcise() {
-        final double EXCISE = 5.56;
-        BigDecimal excise = new BigDecimal(EXCISE);
+        final double exciseConst = 5.56;
+        BigDecimal excise = new BigDecimal(exciseConst);
         if (date.equals(stepMotherDay)) {
             excise = BigDecimal.ZERO;
         }
