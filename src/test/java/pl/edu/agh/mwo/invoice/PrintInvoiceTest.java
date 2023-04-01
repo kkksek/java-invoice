@@ -5,6 +5,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import pl.edu.agh.mwo.invoice.product.FuelCanister;
 import pl.edu.agh.mwo.invoice.product.OtherProduct;
 import pl.edu.agh.mwo.invoice.product.Product;
@@ -21,11 +23,11 @@ public class PrintInvoiceTest extends TestCase {
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
 
-    @Before
+    @BeforeEach
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
-    @After
+    @AfterEach
     public void tearDown() {
         System.setOut(standardOut);
     }
