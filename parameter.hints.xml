@@ -1,9 +1,0 @@
-<application>
-  <component name="ParameterNameHintsSettings">
-    <blacklists>
-      <blacklist language="Java">
-        <added pattern="cwiczenie3.Cwiczenie3.makeFolders(directoryName)" />
-      </blacklist>
-    </blacklists>
-  </component>
-</application>
