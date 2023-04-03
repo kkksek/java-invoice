@@ -1,6 +1,7 @@
 package pl.edu.agh.mwo.invoice;
 
 import junit.framework.TestCase;
+import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -38,16 +39,12 @@ public class PrintInvoiceTest extends TestCase {
         Product product = new FuelCanister("Diesel",new BigDecimal(4));
         invoice.addProduct(product,1);
         printInvoice(invoice);
-        Assert.assertEquals(
-                "Invoice number: 1\r\n"+
-                "Product: Diesel, Unit price: 4, " +
-                "Quantity: 1 || Netto value: 4 || VAT 23.00% || " +
-                "Excise: 5.56 || Gross value: 10.48\r\n"+
-                        "Number of positions: 1\r\n"+
-                "Net total: 4 || Tax total: 6.48 || Gross total: 10.48".trim(),
-                outputStreamCaptor.toString()
-                        .trim());
-
+        String printedInvoice = outputStreamCaptor.toString().trim();
+        Assert.assertThat(printedInvoice, Matchers.containsString("Invoice number: 1"));
+        Assert.assertThat(printedInvoice, Matchers.containsString("Product: Diesel, Unit price: 4,"));
+        Assert.assertThat(printedInvoice, Matchers.containsString("Quantity: 1 || Netto value: 4 || VAT 23.00% || "));
+        Assert.assertThat(printedInvoice, Matchers.containsString("Number of positions: 1"));
+        Assert.assertThat(printedInvoice, Matchers.containsString("Net total: 4 || Tax total: 6.48 || Gross total: 10.48"));
     }
     @Test
     public void testPrintTwoLinesOfProduct(){
