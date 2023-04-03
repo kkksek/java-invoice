@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 
 import static pl.edu.agh.mwo.invoice.PrintInvoice.printInvoice;
 
-public class PrintInvoiceTestWithOneLine extends TestCase {
+public class PrintInvoiceWithOneLineTest extends TestCase {
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
