@@ -10,6 +10,10 @@
           <option name="url" value="https://github.com/kkksek/vue-starter.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/kkksek/js-lab.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="D:\Metody Wytwarzania Oprogramowania\Programowanie aplikacji webowych 2" />
